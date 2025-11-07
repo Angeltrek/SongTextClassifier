@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Lyrics → Genre</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 24px auto;
+        padding: 16px;
+      }
+      textarea {
+        width: 100%;
+        height: 220px;
+        font-size: 14px;
+        padding: 8px;
+      }
+      button {
+        padding: 10px 16px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .result {
+        margin-top: 18px;
+        padding: 12px;
+        border-radius: 8px;
+        background: #f5f5f5;
+      }
+      .prob-list {
+        margin-top: 8px;
+      }
+      .prob-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 4px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Clasificador de género por letra</h1>
+    <p>Pega la letra de la canción y pulsa <b>Predecir</b>.</p>
+
+    <textarea
+      id="lyrics"
+      placeholder="Pega aquí la letra de la canción..."
+    ></textarea>
+    <div style="margin-top: 8px">
+      <button id="predictBtn">Predecir</button>
+      <button id="clearBtn" style="margin-left: 8px">Limpiar</button>
+    </div>
+
+    <div id="output" class="result" style="display: none">
+      <h3>Predicción: <span id="predLabel"></span></h3>
+      <div id="predIndex"></div>
+      <div class="prob-list" id="probs"></div>
+    </div>
+
+    <script src="/static/main.js"></script>
+  </body>
+</html>
