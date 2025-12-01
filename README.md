@@ -4,9 +4,9 @@
 
 ## Resumen
 
-Se desarrollaron dos modelos de clasificación cuyo objetivo principal es categorizar letras de canciones según su género musical mediante técnicas de Procesamiento de Lenguaje Natural (NLP). El dataset original contiene aproximadamente cinco millones de registros y abarca seis géneros: country, misc, pop, rap, rb y rock.
+Se desarrollaron dos modelos de clasificación que su objetivo principal es categorizar letras de canciones según su género musical mediante técnicas de Procesamiento de Lenguaje Natural (NLP). El dataset original contiene aproximadamente cinco millones de registros y abarca seis géneros: country, misc, pop, rap, rb y rock.
 
-Si bien ambos modelos logran identificar patrones lingüísticos relevantes, presentan limitaciones inherentes al uso exclusivo de texto. Las letras por sí solas no capturan todos los elementos musicales (timbre, ritmo, entonación) que definen un género. Para construir un sistema verdaderamente robusto, sería necesario incorporar el audio de las canciones y aplicar técnicas de visión o procesamiento de señales, como espectrogramas analizados con redes neuronales convolucionales (CNN).
+Si bien ambos modelos logran identificar patrones lingüísticos relevantes, tienen limitaciones inherentes al uso exclusivo de texto. Las letras por sí solas no capturan todos los elementos musicales (timbre, ritmo, entonación) que definen un género. Para construir un sistema con una mayor presición, sería necesario incorporar el audio de las canciones y aplicar técnicas de visión o procesamiento de señales, como espectrogramas analizados con redes neuronales convolucionales (CNN).
 
 Por restricciones computacionales, los modelos se entrenaron usando solo una fracción del dataset completo:
 
@@ -19,17 +19,17 @@ Estos subconjuntos permitieron entrenar modelos funcionales manteniendo un balan
 
 Ambos modelos presentan limitaciones importantes derivadas principalmente del tamaño del dataset y de la naturaleza de los datos disponibles. La primera limitación es la falta de recursos computacionales suficientes para procesar los 5,000,000 de registros originales. Debido a ello, fue necesario reducir el tamaño del conjunto de datos a subconjuntos más manejables, lo cual disminuye la diversidad y representatividad de los ejemplos utilizados durante el entrenamiento.
 
-Otra limitación significativa es que el dataset contiene únicamente las letras de las canciones y no incluye información relacionada con el audio. Esto restringe la capacidad del modelo para capturar características musicales complejas como ritmo, tempo, entonación o patrones sonoros propios de cada género. Para mejorar la robustez del sistema y lograr una clasificación más completa, sería necesario integrar tanto el análisis textual como el análisis del audio original, idealmente mediante modelos especializados como redes neuronales convolucionales (CNN) o arquitecturas híbridas multimodales.
+Otra limitación significativa es que el dataset contiene únicamente las letras de las canciones y no incluye información relacionada con el audio. Esto restringe la capacidad del modelo para capturar características musicales complejas como ritmo, tempo, entonación o patrones sonoros propios de cada género. Para mejorar la robustez del sistema y lograr una clasificación más completa, sería necesario integrar tanto el análisis textual como el análisis del audio original, idealmente mediante modelos especializados como redes neuronales convolucionales (CNN) o arquitecturas híbridas.
 
-Finalmente, la ausencia de metadatos adicionales como estructura musical, producción, instrumentos o información contextual del artista limita el alcance del modelo, que solo puede aprender patrones lingüísticos y no características propias del estilo musical.
+Finalmente, la falta de metadatos adicionales como estructura musical, producción, instrumentos o información contextual del artista limita el alcance del modelo, que solo puede aprender patrones lingüísticos y no características propias del estilo musical.
 
 ## Sesgos del Dataset
 
-El modelo presenta sesgos derivados de la composición del dataset. En primer lugar, el conjunto de datos solo contempla seis géneros musicales, lo cual reduce la diversidad real del panorama musical. Esta limitación puede generar un sesgo significativo, ya que muchos géneros, subgéneros y fusiones musicales no están representados. Como consecuencia, el modelo aprende a distinguir únicamente entre un conjunto reducido de estilos, lo que limita su capacidad para generalizar si se le proporcionan letras pertenecientes a géneros no incluidos.
+El modelo presenta sesgos derivados de la composición del dataset. En primer lugar, el conjunto de datos solo contempla seis géneros musicales, lo cual reduce la diversidad real de los generos musicales. Esta limitación puede generar un sesgo significativo, ya que muchos géneros, subgéneros y fusiones musicales no están representados. Como consecuencia, el modelo aprende a distinguir únicamente entre un conjunto reducido de estilos, lo que limita su capacidad para generalizar si se le proporcionan letras pertenecientes a géneros no incluidos.
 
-No obstante, la reducción a seis categorías también tiene un efecto positivo: disminuye la superposición entre clases y facilita el aprendizaje de patrones específicos, reduciendo la confusión y mejorando la estabilidad del entrenamiento. Aun así, es importante reconocer que esta simplificación puede introducir un sesgo implícito, ya que el modelo podría clasificar cualquier letra en uno de los géneros disponibles, incluso si no corresponde a ninguno.
+No obstante, la reducción a seis categorías también tiene un efecto positivo, ya que disminuye la superposición entre clases y facilita el aprendizaje de patrones específicos, reduciendo la confusión y mejorando la estabilidad del entrenamiento. Aun así, es importante reconocer que esta simplificación puede introducir un sesgo, porque el modelo podría clasificar cualquier letra en uno de los géneros disponibles, incluso si no corresponde a ninguno.
 
-Además, la distribución de los datos entre los géneros puede no ser equilibrada, lo que podría provocar que el modelo favorezca los géneros con mayor cantidad de ejemplos. Esto representa un riesgo de sobreajuste hacia clases dominantes y una disminución del rendimiento en géneros minoritarios.
+Además, la distribución de los datos entre los géneros puede no ser equilibrada, lo que podría provocar que el modelo favorezca los géneros con mayor cantidad de ejemplos. Esto representa un riesgo de overfitting hacia clases dominantes y una disminución del rendimiento en géneros minoritarios.
 
 ## Primer Modelo
 
@@ -43,7 +43,7 @@ Se emplea una capa de embedding de 128 dimensiones que aprende representaciones 
 
 El segundo modelo utiliza GloVe (Global Vectors for Word Representation), un algoritmo no supervisado que genera representaciones vectoriales de palabras a partir de grandes corpus de texto. Estas representaciones capturan relaciones semánticas y sintácticas entre las palabras, revelando estructuras lineales en el espacio vectorial.
 
-El modelo combina una CNN y una GRU bidireccional para la clasificación de letras de canciones. Emplea los vectores preentrenados de GloVe como embeddings iniciales, lo que permite que el modelo aprenda con mayor rapidez el significado y contexto de las palabras.
+El modelo combina una CNN y una GRU bidireccional para la clasificación de letras de canciones. Usa los vectores preentrenados de GloVe como embeddings iniciales, lo que permite que el modelo aprenda con mayor rapidez el significado y contexto de las palabras.
 
 La capa convolucional extrae patrones locales y combinaciones de palabras relevantes, mientras que la GRU bidireccional captura dependencias contextuales en ambas direcciones de la secuencia.
 
@@ -51,7 +51,7 @@ El preprocesamiento incluye la limpieza de las letras mediante expresiones regul
 
 # Extracción de Datos
 
-El dataset utilizado contiene información recopilada durante 2022 desde la plataforma Genius, un sitio colaborativo donde los usuarios pueden subir y transcribir letras de canciones, poemas e incluso fragmentos de libros aunque su uso principal está enfocado en la música.
+El dataset utilizado contiene información recopilada durante 2022 desde la plataforma Genius, un sitio donde los usuarios pueden subir y transcribir letras de canciones, poemas e incluso fragmentos de libros aunque su uso principal está enfocado en la música.
 
 Este conjunto de datos incluye aproximadamente 5 millones de canciones, junto con sus respectivas letras.
 Las letras provienen directamente del formato nativo de Genius, el cual requiere un preprocesamiento cuidadoso antes de ser analizado o utilizado para entrenar modelos de Deep Learning.
@@ -61,6 +61,20 @@ En particular:
 - Las letras suelen incluir metadatos entre corchetes, como [Verse 1], [Chorus] o [Produced by ...], que no forman parte del contenido lírico y deben eliminarse o tratarse.
 - La estructura original del texto mantiene los saltos de línea y secciones tal como aparecen en la transcripción, lo cual puede generar dificultades al leer los datos o al pasarlos a modelos que esperan texto plano.
 - Además, otras columnas del dataset (como los campos de features o descripciones adicionales) también requieren limpieza y normalización antes de ser utilizadas en el pipeline de procesamiento.
+
+| **Columna**       | **Descripción**                                                                                                                                                |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **title**         | Título de la pieza. La mayoría son canciones, pero también puede haber libros, poemas u otros tipos de contenido.                                              |
+| **tag**           | Género de la pieza. La mayoría de obras no musicales se clasifican como _misc_, aunque hay excepciones. Algunas canciones también pueden aparecer como _misc_. |
+| **artist**        | Artista, grupo o autor al que se atribuye la pieza.                                                                                                            |
+| **year**          | Año de lanzamiento o publicación.                                                                                                                              |
+| **views**         | Número de visitas registradas en la página.                                                                                                                    |
+| **features**      | Artistas adicionales que participaron o colaboraron en la pieza.                                                                                               |
+| **lyrics**        | Letra completa de la canción o texto asociado a la pieza.                                                                                                      |
+| **id**            | Identificador único de Genius.                                                                                                                                 |
+| **language_cld3** | Idioma de la letra según el modelo CLD3. Si el resultado no es confiable, aparece como `NaN`.                                                                  |
+| **language_ft**   | Idioma de la letra según FastText (langid). Los valores con confianza menor a 0.5 se registran como `NaN`.                                                     |
+| **language**      | Idioma consolidado solo cuando **CLD3** y **FastText** coinciden; en caso contrario, es `NaN`.                                                                 |
 
 ## Tamaño del Dataset
 
@@ -252,8 +266,8 @@ Para evaluar de forma justa el rendimiento del modelo, el conjunto de datos se d
 
 ### Modelo 1
 
-- 80% para entrenamiento (X_train, y_train): El modelo aprende de estos
-- 20% para prueba (X_test, y_test): Se usan para evaluar el desempeño real del modelo en datos que nunca vio
+- **Entrenamiento** (80%): usado para ajustar los parámetros del modelo.
+- **Prueba** (20%): se reserva completamente para evaluar el desempeño final en datos nunca vistos.
 
 ### Modelo 2
 
@@ -394,7 +408,7 @@ flowchart TD
 
 En el primer modelo se observa que no logró generalizar adecuadamente. La matriz de confusión muestra que las clasificaciones por género no son correctas, a pesar de que el modelo reporta un test accuracy de 0.76. Este valor resulta engañoso cuando se analiza cómo realmente está realizando las predicciones.
 
-La causa principal de este comportamiento fue una mala división de los datos. La mayoría de las letras pertenecen al género rap, por lo que el modelo terminó sesgado hacia esta clase, sin aprender patrones representativos de los demás géneros. En consecuencia, el accuracy parece elevado únicamente porque el conjunto está desbalanceado: al haber más ejemplos de un mismo género, el modelo acierta con mayor frecuencia sin necesariamente aprender.
+La causa principal de este comportamiento fue una mala división de los datos. La mayoría de las letras pertenecen al género rap, por lo que el modelo terminó sesgado hacia esta clase, sin aprender patrones representativos de los demás géneros. El accuracy parece elevado únicamente porque el conjunto está desbalanceado: al haber más ejemplos de un mismo género, el modelo acierta con mayor frecuencia sin necesariamente aprender.
 
 Además de la mala clasificación, el tiempo de entrenamiento fue excesivamente largo: cada epoch tomó alrededor de una hora. Esto indica que tanto la arquitectura del modelo como el método de embedding requieren optimización para reducir el tiempo de cómputo.
 
@@ -418,7 +432,7 @@ El modelo muestra un test accuracy de 0.76, pero este valor es altamente engaño
 - clases minoritarias como rb y pop tienen valores muy bajos, especialmente recall
 - el macro F1 = 0.54, indicando rendimiento deficiente cuando todas las clases son tratadas por igual
 
-La aparente “buena” exactitud no refleja una verdadera capacidad de generalización: el modelo está sesgado hacia la clase mayoritaria y no aprende representaciones robustas para las demás.
+La aparente buena exactitud no refleja una verdadera capacidad de generalización, el modelo está sesgado hacia la clase mayoritaria y no aprende representaciones significativas para las demás.
 
 ![alt text](image-1.png)
 
@@ -455,7 +469,7 @@ Este segundo modelo:
 - mantiene F1 razonables incluso en categorías difíciles,
 - y sí generaliza, aunque el accuracy no sea alto.
 
-En clasificación de texto multiclase con géneros tan solapados, un modelo con F1 macro ≈ 0.62 ya es un avance sólido y además mucho más confiable que el primero.
+En clasificación de texto multiclase, un modelo con F1 macro similar a 0.62 ya es un buen avance y además mucho más confiable que el primero.
 
 ### ¿Por qué el modelo sigue siendo útil aunque el accuracy sea de 0.63?
 
@@ -488,16 +502,6 @@ Aun así, este modelo es útil porque:
 | **Adecuado para…**               | Clasificación básica con poco texto o variabilidad baja.                    | Tareas complejas donde se necesita semántica y patrones más ricos.                  |
 
 ## Comparación Final
-
-| Aspecto                                | Mejor Modelo             |
-| -------------------------------------- | ------------------------ |
-| Comprensión semántica                  | Modelo 2 (GloVe + BiGRU) |
-| Manejo de desbalance                   | Modelo 2                 |
-| Consistencia entre clases              | Modelo 2                 |
-| Velocidad de convergencia              | Modelo 2                 |
-| Robustez ante ruido                    | Modelo 2                 |
-| Rendimiento real en macro-F1           | Modelo 2                 |
-| Adaptabilidad a mayor volumen de datos | Modelo 2                 |
 
 El primer modelo (LSTM) dependía de aprender semántica desde cero, lo cual es lento, costoso y frágil. Además, el gran desbalance de clases lo sesgó. El segundo modelo partió de embeddings robustos (GloVe), incorporó patrones locales (CNN) y entendió el contexto global en ambas direcciones (BiGRU), logrando una representación más completa, estable y precisa del texto.
 
