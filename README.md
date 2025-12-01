@@ -1,4 +1,8 @@
-# Resumen
+# Implementación de técnicas de aprendizaje máquina
+
+#### Angel Mauricio Ramírez Herrera | A01710158
+
+## Resumen
 
 Se desarrollaron dos modelos de clasificación cuyo objetivo principal es categorizar letras de canciones según su género musical mediante técnicas de Procesamiento de Lenguaje Natural (NLP). El dataset original contiene aproximadamente cinco millones de registros y abarca seis géneros: country, misc, pop, rap, rb y rock.
 
