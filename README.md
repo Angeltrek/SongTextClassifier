@@ -594,10 +594,10 @@ Ve a http://localhost:5000 (o el host/puerto que te indique el servidor) para ve
 
 # Referencias y recursos utilizados
 
-Dataset: https://www.kaggle.com/code/angeltrek/clasificador-de-letras
-GloVe: https://medium.com/@abhishekjainindore24/glove-global-vector-an-extension-to-word2vec-embedding-technique-359ce4289908
-GRU vs LSTM: https://medium.com/@prudhviraju.srivatsavaya/lstm-vs-gru-c1209b8ecb5a
-¿Qué es una GRU?: https://www.ultralytics.com/es/glossary/gated-recurrent-unit-gru
-word to vec example: https://drive.google.com/file/d/1VchWGUixpz3Wej-s-SJodxLZN2G_pewa/view?usp=drive_link
-word vectors and embeddings: https://drive.google.com/file/d/1DvvS_4zifovhwQkMTFRsjKobT48yHaBz/view?usp=drive_link
-text embedding: https://drive.google.com/drive/folders/1H9FWL-AK00OJBbn_xW7W-FSFtkgndf74?usp=drive_link
+- Dataset: https://www.kaggle.com/code/angeltrek/clasificador-de-letras
+- GloVe: https://medium.com/@abhishekjainindore24/glove-global-vector-an-extension-to-word2vec-embedding-technique-359ce4289908
+- GRU vs LSTM: https://medium.com/@prudhviraju.srivatsavaya/lstm-vs-gru-c1209b8ecb5a
+- ¿Qué es una GRU?: https://www.ultralytics.com/es/glossary/gated-recurrent-unit-gru
+- word to vec example: https://drive.google.com/file/d/1VchWGUixpz3Wej-s-SJodxLZN2G_pewa/view?usp=drive_link
+- word vectors and embeddings: https://drive.google.com/file/d/1DvvS_4zifovhwQkMTFRsjKobT48yHaBz/view?usp=drive_link
+- text embedding: https://drive.google.com/drive/folders/1H9FWL-AK00OJBbn_xW7W-FSFtkgndf74?usp=drive_link
