@@ -463,7 +463,7 @@ Aun así, este modelo es útil porque:
 - Generaliza mejor, por lo que sus predicciones se basan en patrones lingüísticos, no en la proporción de datos.
 - **Puede servir como componente complementario** en un sistema más amplio si en el futuro se integra audio.
 
-![1763065904410](images/README/1763065904410.png)
+![alt text](image-2.png)
 
 ![1763065930710](images/README/1763065930710.png)
 
